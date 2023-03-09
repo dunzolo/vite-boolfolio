@@ -53,24 +53,22 @@ export default {
                     </div>
                     <div class="d-flex flex-wrap" v-else>
                         <AppCard v-for="(item, index) in projects" :project="item" :baseUrl="this.baseUrl"/>
+                        <div class="col-12">
+                            <nav>
+                                <ul class="pagination d-flex justify-content-center">
+                                    <li :class="currentPage === 1 ? 'disabled' : 'page-item'">
+                                        <button class="page-link" @click="getProjects(currentPage - 1)">Prev</button>
+                                    </li>
+                                    <li :class="currentPage === item ? 'disabled' : 'page-item'" v-for="item in lastPage">
+                                        <button class="page-link" @click="getProjects(item)">{{item}}</button>
+                                    </li>
+                                    <li :class="currentPage === lastPage ? 'disabled' : 'page-item'">
+                                        <button class="page-link" @click="getProjects(currentPage + 1)">Next</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <nav>
-                        <ul class="pagination d-flex justify-content-center">
-                            <li :class="currentPage === 1 ? 'disabled' : 'page-item'">
-                                <button class="page-link" @click="getProjects(currentPage - 1)">Prev</button>
-                            </li>
-                            <li :class="currentPage === item ? 'disabled' : 'page-item'" v-for="item in lastPage">
-                                <button class="page-link" @click="getProjects(item)">{{item}}</button>
-                            </li>
-                            <li :class="currentPage === lastPage ? 'disabled' : 'page-item'">
-                                <button class="page-link" @click="getProjects(currentPage + 1)">Next</button>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>

@@ -13,12 +13,12 @@ export default {
 </script>
 
 <template lang="">
-    <div class="col-3 my-3">
+    <!-- impostato altezza fissa -->
+    <div class="col-3 my-3 h-700">
         <div class="mx-1 h-100">
             <div class="card h-100">
-                <div class="height-500">
-                    <img class="card-img-top"
-                        :src="project.cover_image != null ? `${baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'">
+                <div class="height-300">
+                    <img class="card-img-top" :src="project.cover_image != null ? `${baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{project.title}}</strong></h5>
@@ -39,8 +39,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.height-500 {
-    height: 500px;
+.h-700 {
+    height: 600px;
+}
+
+.height-300 {
+    height: 300px;
 
     img {
         height: 100%;
