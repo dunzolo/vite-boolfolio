@@ -3,21 +3,36 @@ export default {
     props: {
         project: Object,
         baseUrl: String
-    }
+    },
+    methods: {
+        substringContent(content) {
+            return content.substring(0, 50) + '...';
+        }
+    },
 }
 </script>
 
 <template lang="">
     <div class="col-3 my-3">
-        <div class="card mx-1">
-            <div class="height-500">
-                <img class="card-img-top"
-                    :src="project.cover_image != null ? `${baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{project.title}}</h5>
-                <!-- <p class="card-text">{{project.content}}</p> -->
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="mx-1 h-100">
+            <div class="card h-100">
+                <div class="height-500">
+                    <img class="card-img-top"
+                        :src="project.cover_image != null ? `${baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{project.title}}</strong></h5>
+                    <div class="mb-2"><em><strong>Categoria: </strong>{{project.type.name}}</em></div>
+                    <div class="mb-2">
+                        <em><strong>Tecnologia: </strong>
+                            <span class="badge bg-primary" v-for="(technology, index) in project.technologies" :key="index">{{technology.name}}</span>
+                        </em>
+                    </div>
+                    <p class="card-text">{{this.substringContent(project.content)}}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="#" class="btn btn-primary">Continua a leggere</a>
+                </div>
             </div>
         </div>
     </div>
@@ -30,68 +45,6 @@ export default {
     img {
         height: 100%;
         width: 100%;
-    }
-}
-
-.loader {
-    color: black;
-    font-size: 45px;
-    text-indent: -9999em;
-    overflow: hidden;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    position: relative;
-    transform: translateZ(0);
-    animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
-}
-
-@keyframes mltShdSpin {
-    0% {
-        box-shadow: 0 -0.83em 0 -0.4em,
-            0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
-            0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-    }
-
-    5%,
-    95% {
-        box-shadow: 0 -0.83em 0 -0.4em,
-            0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
-            0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-    }
-
-    10%,
-    59% {
-        box-shadow: 0 -0.83em 0 -0.4em,
-            -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em,
-            -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
-    }
-
-    20% {
-        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
-            -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em,
-            -0.749em -0.34em 0 -0.477em;
-    }
-
-    38% {
-        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
-            -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em,
-            -0.82em -0.09em 0 -0.477em;
-    }
-
-    100% {
-        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em,
-            0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-    }
-}
-
-@keyframes round {
-    0% {
-        transform: rotate(0deg)
-    }
-
-    100% {
-        transform: rotate(360deg)
     }
 }
 </style>
