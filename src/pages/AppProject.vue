@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '../store.js';
 
 import AppCard from './AppCard.vue';
 
@@ -10,9 +11,9 @@ export default {
     },
     data() {
         return {
+            store,
             projects: [],
             loading: true,
-            baseUrl: 'http://127.0.0.1:8000',
             currentPage: 1,
             lastPage: null
         }
@@ -22,11 +23,8 @@ export default {
     },
     methods: {
         getProjects(project_page) {
-            axios.get(`${this.baseUrl}/api/projects`, { params: { page: project_page } }).then((response) => {
+            axios.get(`${store.baseUrl}/api/projects`, { params: { page: project_page } }).then((response) => {
                 if (response.data.success) {
-                    // this.projects = response.data.results;
-                    // this.loading = false;
-
                     this.projects = response.data.results.data;
                     this.currentPage = response.data.results.current_page;
                     this.lastPage = response.data.results.last_page;
@@ -49,10 +47,10 @@ export default {
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-center" v-if="loading">
-                        <span class="loader"></span>
+                        <span class="loader my-5"></span>
                     </div>
                     <div class="d-flex flex-wrap" v-else>
-                        <AppCard v-for="(item, index) in projects" :project="item" :baseUrl="this.baseUrl"/>
+                        <AppCard v-for="(item, index) in projects" :project="item"/>
                         <div class="col-12">
                             <nav>
                                 <ul class="pagination d-flex justify-content-center">

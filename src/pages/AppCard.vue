@@ -1,8 +1,15 @@
 <script>
+import axios from 'axios';
+import { store } from '../store.js';
+
 export default {
     props: {
         project: Object,
-        baseUrl: String
+    },
+    data() {
+        return {
+            store
+        }
     },
     methods: {
         substringContent(content) {
@@ -18,7 +25,7 @@ export default {
         <div class="mx-1 h-100">
             <div class="card h-100">
                 <div class="height-300">
-                    <img class="card-img-top" :src="project.cover_image != null ? `${baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'">
+                    <img class="card-img-top" :src="project.cover_image != null ? `${store.baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{project.title}}</strong></h5>
