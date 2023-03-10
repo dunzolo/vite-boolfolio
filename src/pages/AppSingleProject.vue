@@ -34,7 +34,7 @@ export default {
         </div>
         <div class="row d-flex justify-content-center">
             <div v-if="loading">
-                caricndo
+                <span class="loader my-5"></span>
             </div>
             <div class="col-8 my-3" v-else>
                 <div class="d-flex">
@@ -47,7 +47,7 @@ export default {
                         <div class="card-body mx-2">
                             <h2 class="card-title mb-2"><strong>{{project.title}}</strong></h2>
                             <div class="mb-2"><em><strong>Categoria: </strong>{{project.type.name}}</em></div>
-                            <div class="mb-2">
+                            <div class="mb-2" v-if="project.technologies.length > 0">
                                 <em><strong>Tecnologia: </strong>
                                     <span class="badge bg-primary mx-1" v-for="(technology, index) in project.technologies" :key="index">{{technology.name}}</span>
                                 </em>

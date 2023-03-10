@@ -30,7 +30,7 @@ export default {
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{project.title}}</strong></h5>
                     <div class="mb-2"><em><strong>Categoria: </strong>{{project.type.name}}</em></div>
-                    <div class="mb-2">
+                    <div class="mb-2" v-if="project.technologies.length > 0">
                         <em><strong>Tecnologia: </strong>
                             <span class="badge bg-primary mx-1" v-for="(technology, index) in project.technologies" :key="index">{{technology.name}}</span>
                         </em>
