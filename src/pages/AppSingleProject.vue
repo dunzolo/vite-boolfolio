@@ -18,7 +18,7 @@ export default {
                 this.loading = false;
             }
             else {
-                //inserire pagina non trovata
+                this.$router.push({ name: 'not-found' });
             }
         })
     },
