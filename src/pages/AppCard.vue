@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import { store } from '../store.js';
 
 export default {
@@ -8,9 +7,10 @@ export default {
     },
     data() {
         return {
-            store
+            store,
         }
     },
+
     methods: {
         substringContent(content) {
             return content.substring(0, 50) + '...';
@@ -38,7 +38,7 @@ export default {
                     <p class="card-text">{{this.substringContent(project.content)}}</p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-primary">Continua a leggere</a>
+                    <router-link :to="{ name:'single-project', params: { slug: project.slug }}" class="btn btn-sm btn-success">Continua a leggere</router-link>
                 </div>
             </div>
         </div>
