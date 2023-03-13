@@ -26,7 +26,7 @@ export default {
                 message: this.message,
             }
             this.sending = true;
-            // this.errors = null;
+            this.errors = {};
             axios.post(`${this.store.baseUrl}/api/contacts`, data).then((response) => {
                 if (!(response.data.success)) {
                     this.errors = response.data.errors;
