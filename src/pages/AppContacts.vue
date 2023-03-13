@@ -41,6 +41,9 @@ export default {
                         this.sending = false,
                         this.success = true
 
+                    setTimeout(() => {
+                        this.$router.push({ 'name': 'thank-you' });
+                    }, 2000);
                 }
             });
         }
@@ -80,11 +83,11 @@ export default {
             <div class="col-12">
                 <div class="container">
                     <div class="row">
-                        <div class="text-center mt-3 d-flex justify-content-center">
+                        <!-- <div class="text-center mt-3 d-flex justify-content-center">
                             <div class="alert alert-primary" v-if="success">
                                 Inviato con successo
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-12 text-white">
                             <h4 class="text-center my-3"><em><strong>Scrivici</strong></em></h4>
                             <form @submit.prevent="sendForm">
@@ -148,5 +151,10 @@ export default {
 <style lang="scss" scoped>
 .bg-green {
     background-color: green;
+    position: relative;
+}
+
+.loader {
+    position: fixed;
 }
 </style>

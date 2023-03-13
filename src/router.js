@@ -7,6 +7,7 @@ import AppProject from './pages/AppProject.vue';
 import AppSingleProject from './pages/AppSingleProject.vue';
 import AppContacts from './pages/AppContacts.vue';
 import AppNotFound from './pages/AppNotFound.vue';
+import AppThankYou from './pages/AppThankYou.vue';
 
 //3 - creo l'oggetto router
 const router = createRouter({
@@ -32,6 +33,12 @@ const router = createRouter({
             path: '/contacts',
             name: 'contacts',
             component: AppContacts
+        },
+        ,
+        {
+            path: '/thank-you',
+            name: 'thank-you',
+            component: AppThankYou
         },
         {
             //da inserire sempre per ultima
